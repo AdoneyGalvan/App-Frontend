@@ -1,0 +1,38 @@
+.form-control{
+    width: 90%;
+    font-weight: bold;
+}
+
+.image{
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.button{
+    margin-left: 100px;
+}
+
+.icons {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    color: #009650;
+}
+
+.icons:hover {
+    color: #009650;
+}
+
+.form {
+    padding: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-top: 1rem;
+    margin-bottom: 1.2rem;
+    border: 0.5rem solid transparent;
+    border-color: #ef1a21 #007eca #231e20 #f6ec24ff;
+}
+
+.form-control::placeholder {
+    font-weight: bold;
+}

@@ -1,0 +1,192 @@
+
+  .card-header {
+    background-color: white !important;
+    border-width: 0.1rem;
+    background-clip: content-box;
+    border: none;
+    text-align: center;
+    color: #009650;
+    font-weight: bold;
+  }
+  .card-style {
+    margin-bottom: 2rem;
+    border: 1rem solid;
+    border-color: #ef1a21 #007eca #231e20 #f6ec24ff;
+    border-width: 0.5rem;
+    color: none;
+    padding: 0.5rem;
+    border-radius: 5%;
+  }
+
+  .card-img-top {
+    margin: 0.2rem 0.2rem;
+  }
+
+  .badge-fredmeyer{
+    background-color: #ef1a21 !important;
+  }
+
+  .badge-walmart{
+    background-color: #007eca !important;
+  }
+
+  .badge-safeway{
+    background-color: #231e20 !important;
+  }
+
+  .badge-winco{
+    background-color: #a91f23 !important;
+  }
+
+ .list-group{
+   border: none !important;
+   border: 1rem solid;
+   border-width: 0.1rem;
+   border-color: white;
+ }
+ .list-group-item{
+  border: none !important;
+  overflow: hidden;
+ }
+
+@media screen and (max-width :3000px) and (min-width: 1400px)
+{
+  .card .badge {
+    font-size: 16px;
+  }
+  .price {
+    font-size: 16px !important;
+  }
+}
+
+@media screen and (max-width :1399px) and (min-width: 1186px)
+{
+  .card .badge {
+    font-size: 14px;
+  }
+  .price {
+    font-size: 14px !important;;
+  }
+}
+
+@media screen and (max-width :1185px) and (min-width: 970px)
+{
+  .card .badge {
+    font-size: 16px;
+  }
+  .price {
+    font-size: 16px !important;;
+  }
+}
+
+@media screen and (max-width :969px) and (min-width: 751px)
+{
+  .card .badge {
+    font-size: 20px;
+  }
+  .price {
+    font-size: 20px !important;;
+  }
+}
+
+@media screen and (max-width :750px) and (min-width: 100px)
+{
+  .card .badge {
+    font-size: 28px;
+  }
+  .price {
+    font-size: 28px !important;;
+  }
+}
+
+.list-group-item {
+  align-items: center;
+  justify-content: center;
+}
+
+.item-button-fredmeyer {
+  background-clip:padding-box;
+  color: white;
+  font-weight: bold;
+  background-color: #ef1a21;
+  border: 0.4rem solid;
+  border-color: #ef1a21 #007eca #231e20 #f6ec24ff;
+}
+
+.item-button-fredmeyer:hover {
+  background-clip:padding-box;
+  color: white;
+  font-weight: bold;
+  background-color: #009650;
+  border: 0.4rem solid;
+  border-color: #ef1a21 #007eca #231e20 #f6ec24ff;
+}
+
+
+.item-button-safeway {
+  background-clip:padding-box;
+  color: white;
+  font-weight: bold;
+  background-color: #231e20;
+  border: 0.4rem solid;
+  border-color: #ef1a21 #007eca #231e20 #f6ec24ff;
+}
+
+.item-button-safeway:hover {
+  background-clip:padding-box;
+  color: white;
+  font-weight: bold;
+  background-color: #009650;
+  border: 0.4rem solid;
+  border-color: #ef1a21 #007eca #231e20 #f6ec24ff;
+}
+
+.item-button-walmart {
+  background-clip:padding-box;
+  color: white;
+  font-weight: bold;
+  background-color: #007eca;
+  border: 0.4rem solid;
+  border-color: #ef1a21 #007eca #231e20 #f6ec24ff;
+}
+
+.item-button-walmart:hover {
+  background-clip:padding-box;
+  color: white;
+  font-weight: bold;
+  background-color: #009650;
+  border: 0.4rem solid;
+  border-color: #ef1a21 #007eca #231e20 #f6ec24ff;
+}
+
+.item-button-winco {
+  background-clip:padding-box;
+  color: white;
+  font-weight: bold;
+  background-color: #a91f23;
+  border: 0.4rem solid;
+  border-color: #ef1a21 #007eca #231e20 #f6ec24ff;
+}
+
+.item-button-winco:hover {
+  background-clip:padding-box;
+  color: white;
+  font-weight: bold;
+  background-color: #009650;
+  border: 0.4rem solid;
+  border-color: #ef1a21 #007eca #231e20 #f6ec24ff;
+}
+
+.price {
+  font-weight: bold;
+  color: #009650;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+}
+
+.form-check-input:checked {
+	background-color: #009650;
+	border-color: #009650;
+}

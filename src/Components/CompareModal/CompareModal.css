@@ -1,0 +1,50 @@
+.compare-modal {
+    position:sticky;
+    bottom:0;
+    background-color: rgba(0,150,80,0.5);
+ }
+
+ .compare-button {
+  position:sticky;
+  bottom:0;
+  background-color: white;
+  border: 1rem solid;
+  border-color: #ef1a21 #007eca #231e20 #f6ec24ff;
+  border-width: 0.5rem;
+  color: #009650;
+  font-weight: bold;
+}
+
+.compare-button:hover {
+  position:sticky;
+  bottom:0;
+  background-color: #009650;
+  border: 1rem solid;
+  border-color: #ef1a21 #007eca #231e20 #f6ec24ff;
+  border-width: 0.5rem;
+  color: white;
+  font-weight: bold;
+}
+ 
+ .compare-button-hide {
+  width: fit-content;
+  height: fit-content;
+  background-color: white;
+  border: 1rem solid;
+  border-color: #ef1a21 #007eca #231e20 #f6ec24ff;
+  border-width: 0.5rem;
+  color: #009650;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.compare-button-hide:hover {
+  width: fit-content;
+  height: fit-content;
+  background-color: #009650;
+  border: 1rem solid;
+  border-color: #ef1a21 #007eca #231e20 #f6ec24ff;
+  border-width: 0.5rem;
+  color: white;
+  font-weight: bold;
+}

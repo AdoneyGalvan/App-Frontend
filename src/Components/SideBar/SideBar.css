@@ -1,0 +1,24 @@
+
+  .form-select {
+    border-color: #ef1a21 #007eca #231e20 #f6ec24ff;
+    border-width: 0.5rem;
+    transition: none;
+    line-height: 1.5;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    margin-left: 0.1rem;
+    margin-right: 0.1rem;
+    color: #009650;
+  }
+
+  .form-filter{
+    border: 0.5rem solid transparent;
+    border-color: #ef1a21 #007eca #231e20 #f6ec24ff;
+  }
+  .form-label {
+    display: block;
+    text-align: center;
+    align-items: center;
+    color: #009650;
+    font-weight: bold;
+  }
