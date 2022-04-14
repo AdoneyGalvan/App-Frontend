@@ -20,7 +20,8 @@ const App = () =>
  const [showLoadModal, setshowLoadModal] = useState(false);
  const [filterValue, setfilterValue] = useState("None");
  const [showCompareModal, setCompareModal] = useState(false);
- const [itemsCompared, setitemsCompared] = useState([]);
+ const [itemsCompared, setItemsCompared] = useState([]);
+ const [itemComparedEvents, setItemComparedEvents] = useState([]);
 
  useEffect(async () =>  {
   await setitemsModified(data);
@@ -30,8 +31,8 @@ const App = () =>
 const fetchSearch = async (search, searchpage) => 
 {
   try {
-      console.log(`${process.env.REACT_APP_API_FETCH_URL}/search?search=${search}&searchpage=${searchpage}`);
-      const response = await fetch(`${process.env.REACT_APP_API_FETCH_URL}/search?search=${search}&searchpage=${searchpage}`);
+      console.log(`https://frugalstoreapi.azurewebsites.net/search?search=${search}&searchpage=${searchpage}`);
+      const response = await fetch(`https://frugalstoreapi.azurewebsites.net/search?search=${search}&searchpage=${searchpage}`);
       const arr = await response.json();
       console.log(arr);
       return arr;
@@ -47,6 +48,8 @@ const fetchSearch = async (search, searchpage) =>
   
       await setsearchBarValue(searchBarCallBackValue);
       await setshowLoadModal(true);
+      await setItemsCompared([]);
+      await setItemComparedEvents([]);
       const arr = await fetchSearch(searchBarCallBackValue, "1");
       await setitemsModified(arr);
       await setitemsBaseline(arr);
@@ -84,9 +87,60 @@ const fetchSearch = async (search, searchpage) =>
       await setCompareModal(compareModalCallBack);
   }
 
-  const compareItemsCallBack = async (compareItemsCallBack) =>
+  const compareEventCallBack = async (compareEventCallBack) =>
   {
-    await setitemsCompared(compareItemsCallBack);
+    
+    let id = compareEventCallBack.parentElement.parentElement.parentElement.getAttribute('id');
+    var isAlreadyInCompareList = false;
+    var isAlreadyInCompareListIndex = 0;
+
+    for (var i = 0; i < itemsCompared.length; i++)
+    {
+        if (itemsCompared[i].id == id)
+        {
+            isAlreadyInCompareList = true;
+            isAlreadyInCompareListIndex = i;
+            break;
+        }
+    }
+
+    if (isAlreadyInCompareList == false)
+    {
+        if (itemsCompared.length < 6)
+        {
+          let itemsCompareCopy = [...itemsCompared];
+          itemsCompareCopy.push(itemsModified[id]);
+          await setItemsCompared(itemsCompareCopy);
+
+          let itemsComparedEventCopy = [...itemComparedEvents];
+          itemsComparedEventCopy.push(compareEventCallBack);
+          await setItemComparedEvents(itemsComparedEventCopy);
+        }
+        else
+        {
+            alert("Only can compare up to six items");
+        }
+    }
+    else 
+    {
+        let itemsCompareCopy = [...itemsCompared];
+        itemsCompareCopy.splice(isAlreadyInCompareListIndex, 1);
+        await setItemsCompared(itemsCompareCopy);
+
+        let itemsComparedEventCopy = [...itemComparedEvents];
+        itemsComparedEventCopy.splice(isAlreadyInCompareListIndex, 1);
+        await setItemComparedEvents(itemsComparedEventCopy);
+    }
+    
+  }
+  const compareEventClearCallback = async () =>
+  {
+    for (var i = 0; i < itemComparedEvents.length; i++)
+    {
+      await itemComparedEvents[i].click();
+    }
+    await setItemComparedEvents([]);
+    await setItemsCompared([]);
   }
 
   return (
@@ -104,8 +158,11 @@ const fetchSearch = async (search, searchpage) =>
                 <Col xxl="2" xl="2" lg="2" md="0" sm="12" xs="12">
                   <SideBar itemsModified={itemsModified} itemsBaseline={itemsBaseline} sortBy={sortCallback} filterBy={filterCallback}/>
                 </Col>
-                <Col xxl="10" xl="10" lg="10" md="12" sm="12" xs="12">
-                  <ItemList itemsModified={itemsModified} itemsCompared={itemsCompared} Compare={compareItemsCallBack}/>
+                <Col className='item-section' xxl="9" xl="9" lg="9" md="12" sm="12" xs="12">
+                  <ItemList itemsModified={itemsModified} compare={compareEventCallBack}/>
+                </Col>
+                <Col xxl="1" xl="1" lg="1" md="0" sm="12" xs="12">
+
                 </Col>
             </Row>
           </Container>
@@ -115,7 +172,7 @@ const fetchSearch = async (search, searchpage) =>
               <Button className='compare-button' onClick={handleShowCompareModal}>Compare Items</Button>
               }
               {showCompareModal == true &&
-              <CompareModal show={compareModalCallBack} itemsCompared={itemsCompared}></CompareModal>
+              <CompareModal show={compareModalCallBack} itemsCompared={itemsCompared} clear={compareEventClearCallback}></CompareModal>
               }
           </Container>
         </>

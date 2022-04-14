@@ -44,15 +44,13 @@
    border-width: 0.1rem;
    border-color: white;
  }
- .list-group-item{
-  border: none !important;
-  overflow: hidden;
- }
 
 @media screen and (max-width :3000px) and (min-width: 1400px)
 {
   .card .badge {
     font-size: 16px;
+    margin-right: 1.8rem;
+    margin-left: 1.8rem;
   }
   .price {
     font-size: 16px !important;
@@ -63,6 +61,8 @@
 {
   .card .badge {
     font-size: 14px;
+    margin-right: 1.6rem;
+    margin-left: 1.6rem;
   }
   .price {
     font-size: 14px !important;;
@@ -73,6 +73,8 @@
 {
   .card .badge {
     font-size: 16px;
+    margin-right: 1.7rem;
+    margin-left: 1.7rem;
   }
   .price {
     font-size: 16px !important;;
@@ -83,6 +85,8 @@
 {
   .card .badge {
     font-size: 20px;
+    margin-right: 1.5rem;
+    margin-left: 1.5rem;
   }
   .price {
     font-size: 20px !important;;
@@ -93,6 +97,8 @@
 {
   .card .badge {
     font-size: 28px;
+    margin-right: 1.3rem;
+    margin-left: 1.3rem;
   }
   .price {
     font-size: 28px !important;;
@@ -102,79 +108,8 @@
 .list-group-item {
   align-items: center;
   justify-content: center;
-}
-
-.item-button-fredmeyer {
-  background-clip:padding-box;
-  color: white;
-  font-weight: bold;
-  background-color: #ef1a21;
-  border: 0.4rem solid;
-  border-color: #ef1a21 #007eca #231e20 #f6ec24ff;
-}
-
-.item-button-fredmeyer:hover {
-  background-clip:padding-box;
-  color: white;
-  font-weight: bold;
-  background-color: #009650;
-  border: 0.4rem solid;
-  border-color: #ef1a21 #007eca #231e20 #f6ec24ff;
-}
-
-
-.item-button-safeway {
-  background-clip:padding-box;
-  color: white;
-  font-weight: bold;
-  background-color: #231e20;
-  border: 0.4rem solid;
-  border-color: #ef1a21 #007eca #231e20 #f6ec24ff;
-}
-
-.item-button-safeway:hover {
-  background-clip:padding-box;
-  color: white;
-  font-weight: bold;
-  background-color: #009650;
-  border: 0.4rem solid;
-  border-color: #ef1a21 #007eca #231e20 #f6ec24ff;
-}
-
-.item-button-walmart {
-  background-clip:padding-box;
-  color: white;
-  font-weight: bold;
-  background-color: #007eca;
-  border: 0.4rem solid;
-  border-color: #ef1a21 #007eca #231e20 #f6ec24ff;
-}
-
-.item-button-walmart:hover {
-  background-clip:padding-box;
-  color: white;
-  font-weight: bold;
-  background-color: #009650;
-  border: 0.4rem solid;
-  border-color: #ef1a21 #007eca #231e20 #f6ec24ff;
-}
-
-.item-button-winco {
-  background-clip:padding-box;
-  color: white;
-  font-weight: bold;
-  background-color: #a91f23;
-  border: 0.4rem solid;
-  border-color: #ef1a21 #007eca #231e20 #f6ec24ff;
-}
-
-.item-button-winco:hover {
-  background-clip:padding-box;
-  color: white;
-  font-weight: bold;
-  background-color: #009650;
-  border: 0.4rem solid;
-  border-color: #ef1a21 #007eca #231e20 #f6ec24ff;
+  border: none !important;
+  padding: 0;
 }
 
 .price {
@@ -189,4 +124,46 @@
 .form-check-input:checked {
 	background-color: #009650;
 	border-color: #009650;
+}
+
+.compare-badge {
+  background-color: #009650 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.add-badge {
+  background-color: #009650 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.compare-badge-selected {
+  background-color: #f204fa !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.compare-badge-selected:hover {
+  background-color: #009650 !important;
+}
+
+.compare-badge:hover {
+  background-color: #f204fa !important;
+}
+
+.add-badge:hover {
+  background-color: #f204fa !important;
+}
+
+.icon-c {
+  pointer-events:none;
+}
+
+.icon-plus {
+  pointer-events:none;
+}
+
+.compare-badge:active {
+  background-color: #f204fa !important;
 }

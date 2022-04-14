@@ -9,11 +9,13 @@
     margin-left: 0.1rem;
     margin-right: 0.1rem;
     color: #009650;
+    border-radius: 6%;
   }
 
   .form-filter{
     border: 0.5rem solid transparent;
     border-color: #ef1a21 #007eca #231e20 #f6ec24ff;
+    border-radius: 6%;
   }
   .form-label {
     display: block;

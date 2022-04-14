@@ -1,5 +1,5 @@
 .form-control{
-    width: 90%;
+    width: 1000%;
     font-weight: bold;
 }
 
@@ -19,7 +19,7 @@
 }
 
 .icons:hover {
-    color: #009650;
+    color: #ef1a21;
 }
 
 .form {
@@ -29,10 +29,12 @@
     display: flex;
     margin-top: 1rem;
     margin-bottom: 1.2rem;
-    border: 0.5rem solid transparent;
-    border-color: #ef1a21 #007eca #231e20 #f6ec24ff;
+    border: 0.5rem solid !important;
+    border-color: #ef1a21 #007eca #231e20 #f6ec24ff !important;
+    border-radius: 6% !important;
 }
 
 .form-control::placeholder {
     font-weight: bold;
+    color: #009650;
 }

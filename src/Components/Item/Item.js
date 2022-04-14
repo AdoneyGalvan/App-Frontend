@@ -7,35 +7,67 @@ import WalmartLogo from './Walmart-Logo.png';
 import WincoLogo from './Winco-Logo.png';
 import SafewayLogo from './Safeway-Logo.png';
 
-const Item = ({ itemdata, itemid, getid}) =>
+const Item = ({ itemdata, itemid, getCompareEvent}) =>
 {
-    const handleClick = (event) => 
+    const handleComapareClick = (event) => 
     {
-        getid(event.target.parentElement.parentElement.parentElement.parentElement.getAttribute('id'));
+        if(event.target.classList[1] == "compare-badge" || event.target.classList[3] == "compare-badge")
+        {
+            event.target.classList.remove("compare-badge");
+            event.target.classList.add("compare-badge-selected");
+            getCompareEvent(event.target);
+            return;
+        }
+
+        if (event.target.classList[3] == "compare-badge-selected")
+        {
+            event.target.classList.add("compare-badge");
+            event.target.classList.remove("compare-badge-selected");
+            getCompareEvent(event.target);
+            return;
+        }
     }
 
+    const handleAddClick = (event) => 
+    {
+/*         if(event.target.classList[1] == "compare-badge" || event.target.classList[3] == "compare-badge")
+        {
+            event.target.classList.remove("compare-badge");
+            event.target.classList.add("compare-badge-selected");
+            getCompareEvent(event.target);
+            return;
+        }
+
+        if (event.target.classList[3] == "compare-badge-selected")
+        {
+            event.target.classList.add("compare-badge");
+            event.target.classList.remove("compare-badge-selected");
+            getCompareEvent(event.target);
+            return;
+        } */
+    }
+
+    /* event.target.parentElement.parentElement.parentElement.parentElement.getAttribute('id') */
     return (
         <>
         {itemdata.store == "Fred Meyer" &&
         <Card className="card-style" id={itemid}>
             <Image className="card-img-top" src={FredMeyerLogo}/>
             <a href={itemdata.url == undefined ? "" : itemdata.url} target="_blank">
-                <Card.Header className="card-header">{itemdata.name}</Card.Header>
-            </a>
-            <a href={itemdata.url == undefined ? "" : itemdata.url} target="_blank">
                 <Card.Img variant="top" src={itemdata.imgurl == undefined ? "" : itemdata.imgurl} href={itemdata.url == undefined ? "" : itemdata.url}/>
             </a>
             <ListGroup>
-                    <ListGroupItem className="d-flex">
-                        <Form.Check type="checkbox" label="Compare" className="price" onClick={handleClick}/>
-                    </ListGroupItem>
+                
                     <ListGroup.Item className="d-flex">
-                        <span className="price">Regular Price</span><Badge pill className="badge-fredmeyer">${itemdata.price == undefined ? " -" : itemdata.price}</Badge>
+                        <Badge className="rounded-circle compare-badge" title="Compare Item" onClick={handleComapareClick}><i class="fa-solid fa-c icon-c"></i></Badge>
+                        <Badge pill className="badge-fredmeyer" title="Price">${itemdata.price == undefined ? " -" : itemdata.price}</Badge>
+                        <Badge className="rounded-circle add-badge" title="Add Item to Cart" onClick={handleAddClick}><i class="fa-solid fa-plus icons-plus"></i></Badge>
                     </ListGroup.Item>
                     <ListGroupItem className="d-flex">
-                        <span className="price">Promotion Price</span><Badge pill className="badge-fredmeyer">${itemdata.price == undefined ? " -" : itemdata.price}</Badge>
+                        <a href={itemdata.url == undefined ? "" : itemdata.url} target="_blank">
+                            <Card.Header className="card-header">{itemdata.name}</Card.Header>
+                        </a>
                     </ListGroupItem>
-                    <Button className="item-button-fredmeyer">Add to Cart</Button>
             </ListGroup>
         </Card>}
 
@@ -43,22 +75,19 @@ const Item = ({ itemdata, itemid, getid}) =>
         <Card className="card-style" id={itemid}>
             <Image className="card-img-top" src={WalmartLogo}/>
             <a href={itemdata.url == undefined ? "" : itemdata.url} target="_blank">
-                <Card.Header className="card-header">{itemdata.name}</Card.Header>
-            </a>
-            <a href={itemdata.url == undefined ? "" : itemdata.url} target="_blank">
                 <Card.Img variant="top" src={itemdata.imgurl == undefined ? "" : itemdata.imgurl} href={itemdata.url == undefined ? "" : itemdata.url}/>
             </a>
             <ListGroup>
                     <ListGroupItem className="d-flex">
-                        <Form.Check type="checkbox" label="Compare" className="price" onClick={handleClick}/>
+                    <Badge className="rounded-circle compare-badge" title="Compare Item" onClick={handleComapareClick}><i class="fa-solid fa-c icon-c"></i></Badge>
+                        <Badge pill className="badge-walmart" title="Price">${itemdata.price == undefined ? " -" : itemdata.price}</Badge>
+                        <Badge className="rounded-circle add-badge" title="Add Item to Cart" onClick={handleAddClick}><i class="fa-solid fa-plus icons-plus"></i></Badge>
                     </ListGroupItem>
-                    <ListGroup.Item className="d-flex">
-                        <span className="price">Regular Price</span><Badge pill className="badge-walmart">${itemdata.price == undefined ? " -" : itemdata.price}</Badge>
-                    </ListGroup.Item>
                     <ListGroupItem className="d-flex">
-                        <span className="price">Promotion Price</span><Badge pill className="badge-walmart">${itemdata.price == undefined ? " -" : itemdata.price}</Badge>
+                        <a href={itemdata.url == undefined ? "" : itemdata.url} target="_blank">
+                            <Card.Header className="card-header">{itemdata.name}</Card.Header>
+                        </a>
                     </ListGroupItem>
-                    <Button className="item-button-walmart">Add to Cart</Button>
             </ListGroup>
         </Card>}
 
@@ -66,45 +95,39 @@ const Item = ({ itemdata, itemid, getid}) =>
         <Card className="card-style" id={itemid}>
             <Image className="card-img-top" src={WincoLogo}/>
             <a href={itemdata.url == undefined ? "" : itemdata.url} target="_blank">
-                <Card.Header className="card-header">{itemdata.name}</Card.Header>
-            </a>
-            <a href={itemdata.url == undefined ? "" : itemdata.url} target="_blank">
                 <Card.Img variant="top" src={itemdata.imgurl == undefined ? "" : itemdata.imgurl} href={itemdata.url == undefined ? "" : itemdata.url}/>
             </a>
             <ListGroup>
                     <ListGroupItem className="d-flex">
-                        <Form.Check type="checkbox" label="Compare" className="price" onClick={handleClick}/>
+                    <Badge className="rounded-circle compare-badge" title="Compare Item" onClick={handleComapareClick}><i class="fa-solid fa-c icon-c"></i></Badge>
+                        <Badge pill className="badge-winco" title="Price">${itemdata.price == undefined ? " -" : itemdata.price}</Badge>
+                        <Badge className="rounded-circle add-badge" title="Add Item to Cart" onClick={handleAddClick}><i class="fa-solid fa-plus icons-plus"></i></Badge>
                     </ListGroupItem>
-                    <ListGroup.Item className="d-flex">
-                        <span className="price">Regular Price</span><Badge pill className="badge-winco">${itemdata.price == undefined ? " -" : itemdata.price}</Badge>
-                    </ListGroup.Item>
-                    <ListGroupItem className="d-flex">
-                        <span className="price">Promotion Price</span><Badge pill className="badge-winco">${itemdata.price == undefined ? " -" : itemdata.price}</Badge>
+                    <ListGroupItem>
+                        <a href={itemdata.url == undefined ? "" : itemdata.url} target="_blank">
+                            <Card.Header className="card-header">{itemdata.name}</Card.Header>
+                        </a>
                     </ListGroupItem>
-                    <Button className="item-button-winco">Add to Cart</Button>
             </ListGroup>
         </Card>}
 
         {itemdata.store == "Safeway" &&
         <Card className="card-style" id={itemid}>
             <Image className="card-img-top" src={SafewayLogo}/>
-            <a href={itemdata.url == undefined ? "" : itemdata.url} target="_blank">
-                <Card.Header className="card-header">{itemdata.name}</Card.Header>
-            </a>
-            <a href={itemdata.url == undefined ? "" : itemdata.url} target="_blank">
-                <Card.Img variant="top" src={itemdata.imgurl == undefined ? "" : itemdata.imgurl} href={itemdata.url == undefined ? "" : itemdata.url}/>
-            </a>
+                <a href={itemdata.url == undefined ? "" : itemdata.url} target="_blank">
+                    <Card.Img variant="top" src={itemdata.imgurl == undefined ? "" : itemdata.imgurl} href={itemdata.url == undefined ? "" : itemdata.url}/>
+                </a>
             <ListGroup>
                     <ListGroupItem className="d-flex">
-                        <Form.Check type="checkbox" label="Compare" className="price" onClick={handleClick}/>
+                    <Badge className="rounded-circle compare-badge" title="Compare Item" onClick={handleComapareClick}><i class="fa-solid fa-c icon-c"></i></Badge>
+                        <Badge pill className="badge-safeway" title="Price">${itemdata.price == undefined ? " -" : itemdata.price}</Badge>
+                        <Badge className="rounded-circle add-badge" title="Add Item to Cart" onClick={handleAddClick}><i class="fa-solid fa-plus icons-plus"></i></Badge>
                     </ListGroupItem>
-                    <ListGroup.Item className="d-flex">
-                        <span className="price">Regular Price</span><Badge pill className="badge-safeway">${itemdata.price == undefined ? " -" : itemdata.price}</Badge>
-                    </ListGroup.Item>
-                    <ListGroupItem className="d-flex">
-                        <span className="price">Promotion Price</span><Badge pill className="badge-safeway">${itemdata.price == undefined ? " -" : itemdata.price}</Badge>
+                    <ListGroupItem>
+                        <a href={itemdata.url == undefined ? "" : itemdata.url} target="_blank">
+                            <Card.Header className="card-header">{itemdata.name}</Card.Header>
+                        </a>
                     </ListGroupItem>
-                    <Button className="item-button-safeway">Add to Cart</Button>
             </ListGroup>
         </Card>}
         </>

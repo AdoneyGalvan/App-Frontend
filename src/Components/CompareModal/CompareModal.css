@@ -48,3 +48,12 @@
   color: white;
   font-weight: bold;
 }
+
+.compare-button-clear {
+  position: absolute;
+  left: 90%;
+}
+
+.compare-button-clear:hover {
+  color: #ef1a21;
+}
