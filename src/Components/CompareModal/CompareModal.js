@@ -14,6 +14,7 @@ const CompareModal = ({show, itemsCompared, clear}) =>
     const clearCompareModal = async () =>
     {
         await clear();
+        await show(false);
     }
 
     return (
