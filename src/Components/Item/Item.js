@@ -7,7 +7,7 @@ import WalmartLogo from './Walmart-Logo.png';
 import WincoLogo from './Winco-Logo.png';
 import SafewayLogo from './Safeway-Logo.png';
 
-const Item = ({ itemdata, itemid, getCompareEvent}) =>
+const Item = ({ itemdata, itemid, getCompareEvent, getAddEvent}) =>
 {
     const handleComapareClick = (event) => 
     {
@@ -30,21 +30,21 @@ const Item = ({ itemdata, itemid, getCompareEvent}) =>
 
     const handleAddClick = (event) => 
     {
-/*         if(event.target.classList[1] == "compare-badge" || event.target.classList[3] == "compare-badge")
+        if(event.target.classList[1] == "add-badge" || event.target.classList[3] == "add-badge")
         {
-            event.target.classList.remove("compare-badge");
-            event.target.classList.add("compare-badge-selected");
-            getCompareEvent(event.target);
+            event.target.classList.remove("add-badge");
+            event.target.classList.add("add-badge-selected");
+            getAddEvent(event.target);
             return;
         }
 
-        if (event.target.classList[3] == "compare-badge-selected")
+        if (event.target.classList[3] == "add-badge-selected")
         {
-            event.target.classList.add("compare-badge");
-            event.target.classList.remove("compare-badge-selected");
-            getCompareEvent(event.target);
+            event.target.classList.add("add-badge");
+            event.target.classList.remove("add-badge-selected");
+            getAddEvent(event.target);
             return;
-        } */
+        }
     }
 
     /* event.target.parentElement.parentElement.parentElement.parentElement.getAttribute('id') */

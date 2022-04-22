@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import ReactDom from "react-dom";
 import "./Header.css";
 import shoppingcart from "./shoppingcart.png";
-import { Image, Row, Navbar, NavLink, NavDropdown, Nav, Container, Form, FormControl, Button, Col } from 'react-bootstrap';
+import { Image, Row, Navbar, NavLink, NavDropdown, Nav, Container, Form, FormControl, Button, Col, Badge } from 'react-bootstrap';
 import logo from "./logo.png";
 
-const Header = ({ searchBarCallback}) => {
+const Header = ({ searchBarCallback, cartCallBack, cartTotal, cartCount}) => {
     // Used to update the UI with the new values
     const [searchBarValue, setsearchBarValue] = useState("");
 
@@ -34,6 +34,10 @@ const Header = ({ searchBarCallback}) => {
         event.preventDefault();
     }
 
+    const handleCartClick = (event) => {
+        cartCallBack();
+    }
+
 
     return (
         <>
@@ -43,10 +47,11 @@ const Header = ({ searchBarCallback}) => {
             </Col>
             <Col Col xxl="10" xl="10" lg="10" md="12" sm="12" xs="12">            
                 <Form className="form" onSubmit={handleOnSubmit}>
-                    <i class="fa-solid fa-magnifying-glass fa-2x icons" onClick={handleSearchClick}></i>
+                    <i class="fa-solid fa-magnifying-glass fa-2x icon-glass" onClick={handleSearchClick}></i>
                     <FormControl type="text" placeholder="Search for Item" value={searchBarValue} onChange={handleInputChange} onKeyUp={handleKeyPress}/>
-                    <i class="fas fa-times fa-2x icons" onClick={handleClearClick}></i>
-                    <i class="fas fa-shopping-cart fa-2x icons"></i>
+                    <i class="fas fa-times fa-2x icon-clear" onClick={handleClearClick}></i>
+                    <i class="fas fa-shopping-cart fa-2x icon-cart" onClick={handleCartClick}><Badge className="item-counter">{cartCount}</Badge></i>
+                    <Badge className="item-total">$ {(Math.round(cartTotal * 100) / 100).toFixed(2)}</Badge>
                 </Form>
             </Col>
             </>

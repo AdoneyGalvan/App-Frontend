@@ -10,6 +10,7 @@ import SideBar from './Components/SideBar/SideBar'
 import data from './data.json'
 import LoadModal from './Components/LoadModal/LoadModal';
 import CompareModal from './Components/CompareModal/CompareModal';
+import CartModal from './Components/CartModal/CartModal';
 
 const App = () =>
 {
@@ -18,10 +19,15 @@ const App = () =>
  const [itemsModified, setitemsModified] = useState([]);
  const [itemsBaseline, setitemsBaseline] = useState([]);
  const [showLoadModal, setshowLoadModal] = useState(false);
+ const [showCartModal, setshowCartModal] = useState(false);
  const [filterValue, setfilterValue] = useState("None");
  const [showCompareModal, setCompareModal] = useState(false);
  const [itemsCompared, setItemsCompared] = useState([]);
  const [itemComparedEvents, setItemComparedEvents] = useState([]);
+ const [itemsCart, setItemsCart] = useState([]);
+ const [itemCartEvents, setItemCartEvents] = useState([]);
+ const [cartTotal, setCartTotal] = useState(0);
+ const [cartCount, setCartCount] = useState(0);
 
  useEffect(async () =>  {
   await setitemsModified(data);
@@ -50,6 +56,10 @@ const fetchSearch = async (search, searchpage) =>
       await setshowLoadModal(true);
       await setItemsCompared([]);
       await setItemComparedEvents([]);
+      await setItemsCart([]);
+      await setItemCartEvents([]);
+      await setCartTotal(0);
+      await setCartCount(0);
       const arr = await fetchSearch(searchBarCallBackValue, "1");
       await setitemsModified(arr);
       await setitemsBaseline(arr);
@@ -58,6 +68,11 @@ const fetchSearch = async (search, searchpage) =>
       return;
     }
     console.log("Empty");
+  }
+
+  const cartCallBack = async () =>
+  {
+    await setshowCartModal(!showCartModal);
   }
 
   const sortCallback = async (sortCallback) => 
@@ -133,6 +148,57 @@ const fetchSearch = async (search, searchpage) =>
     }
     
   }
+
+  const addEventCallBack = async (addEventCallBack) => 
+  {
+    let id = addEventCallBack.parentElement.parentElement.parentElement.getAttribute('id');
+    var isAlreadyInCartList = false;
+    var isAlreadyInCartListIndex = 0;
+
+    for (var i = 0; i < itemsCart.length; i++)
+    {
+        if (itemsCart[i].id == id)
+        {
+            isAlreadyInCartList = true;
+            isAlreadyInCartListIndex = i;
+            break;
+        }
+    }
+
+    if (isAlreadyInCartList == false)
+    {
+        let itemsCartCopy = [...itemsCart];
+        itemsCartCopy.push(itemsModified[id]);
+        let cartTotalCopy = cartTotal;
+        cartTotalCopy = cartTotalCopy + itemsModified[id].price;
+        let cartCountCopy = cartCount;
+        cartCountCopy = cartCountCopy + 1;
+        await setItemsCart(itemsCartCopy);
+        await setCartTotal(cartTotalCopy);
+        await setCartCount(cartCountCopy);
+
+        let itemsCartEventCopy = [...itemCartEvents];
+        itemsCartEventCopy.push(addEventCallBack);
+        await setItemCartEvents(itemsCartEventCopy);
+    }
+    else 
+    {
+        let itemsCartCopy = [...itemsCart];
+        itemsCartCopy.splice(isAlreadyInCartListIndex, 1);
+        let cartTotalCopy = cartTotal;
+        cartTotalCopy = cartTotalCopy - itemsModified[id].price;
+        let cartCountCopy = cartCount;
+        cartCountCopy = cartCountCopy - 1;
+        await setItemsCart(itemsCartCopy);
+        await setCartTotal(cartTotalCopy);
+        await setCartCount(cartCountCopy);
+
+        let itemsCartEventCopy = [...itemCartEvents];
+        itemsCartEventCopy.splice(isAlreadyInCartListIndex, 1);
+        await setItemCartEvents(itemsCartEventCopy);
+    }
+  }
+
   const compareEventClearCallback = async () =>
   {
     for (var i = 0; i < itemComparedEvents.length; i++)
@@ -147,9 +213,11 @@ const fetchSearch = async (search, searchpage) =>
     <>
     {showLoadModal == false &&
         <>
+        {showCartModal == false &&
+        <>
           <Container>
               <Row>
-                <Header searchBarCallback={searchBarCallback}/>
+                <Header searchBarCallback={searchBarCallback} cartCallBack={cartCallBack} cartTotal={cartTotal} cartCount={cartCount}/>
               </Row>
             </Container>
 
@@ -158,15 +226,11 @@ const fetchSearch = async (search, searchpage) =>
                 <Col xxl="2" xl="2" lg="2" md="0" sm="12" xs="12">
                   <SideBar itemsModified={itemsModified} itemsBaseline={itemsBaseline} sortBy={sortCallback} filterBy={filterCallback}/>
                 </Col>
-                <Col className='item-section' xxl="9" xl="9" lg="9" md="12" sm="12" xs="12">
-                  <ItemList itemsModified={itemsModified} compare={compareEventCallBack}/>
-                </Col>
-                <Col xxl="1" xl="1" lg="1" md="0" sm="12" xs="12">
-
+                <Col className='item-section' xxl="10" xl="10" lg="10" md="12" sm="12" xs="12">
+                  <ItemList itemsModified={itemsModified} compare={compareEventCallBack} add={addEventCallBack}/>
                 </Col>
             </Row>
           </Container>
-
           <Container className='compare-section'>
           {showCompareModal == false &&
               <Button className='compare-button' onClick={handleShowCompareModal}>Compare Items</Button>
@@ -175,6 +239,25 @@ const fetchSearch = async (search, searchpage) =>
               <CompareModal show={compareModalCallBack} itemsCompared={itemsCompared} clear={compareEventClearCallback}></CompareModal>
               }
           </Container>
+          </>
+        }
+        {showCartModal == true &&
+        <>
+          <Container>
+            <Row>
+              <Header searchBarCallback={searchBarCallback} cartCallBack={cartCallBack} cartTotal={cartTotal} cartCount={cartCount}/>
+            </Row>
+          </Container>
+          <Container className='main-section'>
+          <Col className='cart-section' xxl="10" xl="10" lg="10" md="12" sm="12" xs="12">
+            <CartModal itemsCart={itemsCart}></CartModal>
+            </Col>
+            <Col xxl="2" xl="2" lg="2" md="12" sm="12" xs="12">
+
+            </Col>
+          </Container>
+          </>
+        }
         </>
       }
       {showLoadModal == true &&

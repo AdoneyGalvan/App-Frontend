@@ -1,0 +1,126 @@
+.cart-item-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1rem solid;
+    border-color: #ef1a21 #007eca #231e20 #f6ec24ff;
+    border-width: 0.5rem;
+    color: none;
+    border-radius: 2%;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.cart-store-logo {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    width: 100%;
+}
+
+.cart-item-img {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    width: 100%;
+}
+
+.cart-item-description {
+    display: flex;
+    justify-content: center;
+    color: #009650;
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.cart-item-price {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.cart-item-fredmeyer {
+    background-color: #ef1a21 !important;
+}
+
+.cart-item-walmart {
+    background-color: #007eca !important;
+}
+
+.cart-item-safeway {
+    background-color: #231e20 !important;
+}
+
+.cart-item-winco {
+    background-color: #a91f23 !important;
+}
+
+@media screen and (max-width :3000px) and (min-width: 1400px)
+{
+  .cart-item-price {
+    font-size: 34px !important;
+  }
+}
+
+@media screen and (max-width :1399px) and (min-width: 1186px)
+{
+  .cart-item-price {
+    font-size: 30px !important;;
+  }
+}
+
+@media screen and (max-width :1185px) and (min-width: 970px)
+{
+  .cart-item-price {
+    font-size: 28px !important;;
+  }
+}
+
+@media screen and (max-width :969px) and (min-width: 751px)
+{
+  .cart-item-price {
+    font-size: 26px !important;;
+  }
+}
+
+@media screen and (max-width :750px) and (min-width: 100px)
+{
+  .cart-item-price {
+    font-size: 12px !important;;
+  }
+}
+
+@media screen and (max-width :3000px) and (min-width: 1400px)
+{
+  .cart-item-description {
+    font-size: 34px !important;
+  }
+}
+
+@media screen and (max-width :1399px) and (min-width: 1186px)
+{
+  .cart-item-description {
+    font-size: 30px !important;;
+  }
+}
+
+@media screen and (max-width :1185px) and (min-width: 970px)
+{
+  .cart-item-description {
+    font-size: 28px !important;;
+  }
+}
+
+@media screen and (max-width :969px) and (min-width: 751px)
+{
+  .cart-item-description {
+    font-size: 26px !important;;
+  }
+}
+
+@media screen and (max-width :750px) and (min-width: 100px)
+{
+  .cart-item-description {
+    font-size: 16px !important;;
+  }
+}

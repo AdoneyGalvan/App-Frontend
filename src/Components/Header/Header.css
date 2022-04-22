@@ -12,13 +12,33 @@
     margin-left: 100px;
 }
 
-.icons {
+.icon-cart {
+    position: relative;
     margin-left: 1rem;
+    color: #009650;
+}
+
+.icon-cart:hover {
+    color: #f204fa;
+}
+
+.icon-glass {
+    position: relative;
     margin-right: 1rem;
     color: #009650;
 }
 
-.icons:hover {
+.icon-glass:hover {
+    color: #f204fa;
+}
+
+.icon-clear {
+    position: relative;
+    margin-left: 1rem;
+    color: #009650;
+}
+
+.icon-clear:hover {
     color: #f204fa;
 }
 
@@ -37,4 +57,17 @@
 .form-control::placeholder {
     font-weight: bold;
     color: #009650;
+}
+
+.item-counter {
+    position: absolute;
+    font-size: 0.5rem;
+    top: 0% !important;
+    right: 2% !important;
+    background-color: #231e20 !important;
+}
+
+.item-total {
+    background-color: white !important;
+    color: #009650 !important;
 }
